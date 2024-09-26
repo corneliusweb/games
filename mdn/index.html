@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Number guess game</title>
+   <link rel="stylesheet" href="css/styles.css">
+   <script type="module" src="scripts/app.js"></script>
+</head>
+<body>
+   
+   <div class="game-container">
+      <div class="description">
+         <h1>Number Guess Game</h1>
+         <p>Hi baby!! This is a simple number guess game. Can you guess the correct number in 10 attempts? Let's find out!!</p>
+         <p>This game picks a random number at the start of each game. It picks a number between <span>1 to 100.</span> You are expected to guess the random it picked correctly</p>
+         <p><strong>TIP:</strong> Always check whether your guess was higher or lower than the random number picked</p>
+      </div>
+
+      <form action="/">
+         <input type="number" class="guess-input" min="1" max="50" required>
+         <input type="submit" class="guess-submit">
+      </form>
+
+      <div class="game-info">
+         <p class="guesses"></p>
+         <p class="last-guess"></p>
+         <p class="low-or-hi"></p>
+      </div>
+   </div>
+
+   <footer>
+      <p>&copy; corneliusweb 2024</p>
+   </footer>
+</body>
+</html>
