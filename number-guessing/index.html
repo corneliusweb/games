@@ -4,8 +4,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Number guess game</title>
-   <link rel="stylesheet" href="css/styles.css">
-   <script type="module" src="scripts/app.js"></script>
+   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
    
@@ -16,21 +15,23 @@
          <p>This game picks a random number at the start of each game. It picks a number between <span>1 to 100.</span> You are expected to guess the random it picked correctly</p>
          <p><strong>TIP:</strong> Always check whether your guess was higher or lower than the random number picked</p>
       </div>
-
-      <form action="/">
-         <input type="number" class="guess-input" min="1" max="50" required>
+      
+      <div class="form">
+         <input type="number" class="guess-input" min="1" max="100" required>
          <input type="submit" class="guess-submit">
-      </form>
-
-      <div class="game-info">
+      </div>
+      
+      <div class="game-infos">
          <p class="guesses"></p>
          <p class="last-guess"></p>
          <p class="low-or-hi"></p>
+         <button class="reset-btn"></button>
       </div>
    </div>
 
    <footer>
       <p>&copy; corneliusweb 2024</p>
    </footer>
+   <script src="./scripts/app.js"></script>
 </body>
 </html>

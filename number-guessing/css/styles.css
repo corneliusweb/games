@@ -20,13 +20,13 @@ body {
    padding: 0 15px;
 }
 
-form input:first-of-type{
+.form input:first-of-type{
    flex-grow: 1;
    flex-basis: 150px;
    max-width: 250px;
 }
 
-form {
+.form {
    display: flex;
    gap: 10px;
    flex-wrap: wrap;
