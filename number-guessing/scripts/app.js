@@ -8,8 +8,9 @@ const guessSubmit = document.querySelector('.guess-submit');
 const guessInput = document.querySelector('.guess-input');
 
 let guessRound = 1;
-let resetButton = document.querySelector('.reset-btn');
-resetButton.style.display = 'none';
+let resetButton;
+
+lastGuess.style.display = 'inline';
 
 function checkGuess() {
 	const userGuess = Number(guessInput.value);
@@ -32,7 +33,6 @@ function checkGuess() {
 		lastGuess.style.backgroundColor = 'red';
 		lastGuess.style.padding = '8px 50px';
 		lastGuess.style.color = '#fff';
-		lastGuess.style.display = 'inline';
 		if (userGuess < randomNumber) {
 			lowOrHi.textContent = 'Last guess was too low!';
 		} else if (userGuess > randomNumber) {
@@ -48,23 +48,23 @@ function checkGuess() {
 guessSubmit.addEventListener('click', checkGuess);
 
 function setGameOver() {
-	guessInput.disabled = true;
+   const gameInfos = document.querySelector('.game-infos')
+   
+   guessInput.disabled = true;
 	guessSubmit.disabled = true;
-	resetButton.style.display = 'block';
-	resetButton.textContent = 'Restart Game';
+	resetButton = document.createElement('button')
+   resetButton.textContent = 'Restart Game';
+   gameInfos.appendChild(resetButton)
 	resetButton.addEventListener('click', resetGame);
 }
 
 function resetGame() {
-	guessRound = 1;
-
+   guessRound = 1;
+   
 	const gameStates = document.querySelectorAll('.game-infos p');
 	for (const state of gameStates) {
-      state.textContent = '';
-      
-   }
-   
-
+		state.textContent = '';
+	}
 
 	resetButton.parentNode.removeChild(resetButton);
 
