@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Number Guess 2.0</title>
+
+   <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+   <main>
+      <div class="description">
+         <h1>NUMBER GUESS 2.0</h1>
+         <p>This is an upgraded version of <a href="../number-guess/">Number Guessing</a> game.</p>
+         <p>This version features a robust styling of the game and more intuitive dynamic features for overall best user experience</p>
+         <p>Unlike the first version, this version uses a dynamic range in each game to pick a number between <span>1 - 1000</span>. Can you guess the right answer in 10 attempts? Let's find out!!!</p>
+      </div>
+
+      <div class="game-area">
+         <div class="top-notification">
+            <div>Guesses left: <span class="leftGuessesEl"></span></div>
+            <!-- <div class="right"></div> -->
+         </div>
+         <div class="form">
+            <label>Enter guess:
+               <input type="number" id="number" class="numberEl" min="1" max="1000" required>
+            </label>
+            <input type="submit" id="submit" class="submitEl">
+         </div>
+         <div class="bottom-notification">
+            <p class="prvGuessEl"></p>
+            <p class="guessOutcomeEl"></p>
+            <p class="differenceEl"></p>
+         </div>
+      </div>
+   </main>
+   
+   <footer></footer>
+
+   <script src="./scripts/app.js"></script>
+</body>
+</html>
