@@ -59,17 +59,19 @@ function checkGuess() {
 
 		if (inputEl.value > 1000 || inputEl.value < 1) {
 			prvGuessEl.textContent = '';
-         guessOutcomeEl.textContent = 'Invalid! Pick numbers between 1 - 1000';
-         
+			difference.textContent = '';
+			guessOutcomeEl.textContent = 'Invalid! Pick numbers between 1 - 1000';
+
 			if (maxAttempt !== 10) {
 				++maxAttempt;
 			} else {
-            maxAttempt += 1;
+				maxAttempt += 1;
 			}
-         --attemptsCount;
+			--attemptsCount;
 		}
 	}
 
+   inputEl.focus();
 	inputEl.value = '';
 	attemptsCount++;
 	const leftGuesses = --maxAttempt;
