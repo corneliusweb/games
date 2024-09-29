@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Number Guess 2.0</title>
+      <title>Guess 2.0</title>
       
       <link rel="stylesheet" href="./css/styles.css">
       <script type="module" src="./scripts/app.js"></script>
@@ -38,7 +38,7 @@
                <div class="timerEl">45</div>
             </div>
             <div class="actions">
-               <h2>Actions</h2>
+               <h2>ACTIONS</h2>
                <button class="startGameEl">Start Game</button>
                <button class="topUpEl">Add Guess</button>
                <button class="resetGamelEl">Reset Game</button>
@@ -54,11 +54,46 @@
 
             <div class="gameStatesEl">
                <div><span class="text">Previous Guess:</span><span class="prvGuessEl"></span></div>
-               <p class="guessOutcomeEl"></p>
                <p class="differenceEl"></p>
             </div>
          </div> 
       </div>
+
+      <!-- Modals for pop ups -->
+
+      <div class="gameOverModalBg gameOverEl">
+         <div class="modals gameOverModal">
+            <div class="text">
+               <h1 class="gameOverHeadingEl"></h1>
+               <p class="answerParaEl"><span class="answerEl"></span></p>
+               <p class="gameOverMsgEl"></p>
+            </div>
+            <div class="gameOverBtnEl">
+               <button class="changeLevelEl">Change Level</button>
+            </div>
+         </div>
+      </div>
+
+      <div class="gameLevelsModalBg gameLevelsEl">
+         <div class="modals gameLevelsModal">
+               <h1>Game Levels</h1>
+               <div class="levels">
+                  <div class="easy">
+                     <p>Numbers 1 - 100</p>
+                     <button>Easy</button>
+                  </div>
+                  <div class="balanced">
+                     <p>Numbers 1 - 500</p>
+                     <button>Balanced</button>
+                  </div>
+                  <div class="mind-reader">
+                     <p>Numbers 1 - 1000</p>
+                     <button>Mind Reader</button>
+                  </div>
+               </div>
+         </div>
+      </div>
+
    </main>
    
    <footer>

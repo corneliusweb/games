@@ -15,13 +15,13 @@ let restartButton;
 const inputEl = document.querySelector('.inputEl');
 const submitEl = document.querySelector('.submitEl');
 
-const gameStatesEl = document.querySelector('.gameStatesEl');
+const gameOverBtnEl = document.querySelector('.gameOverBtnEl');
 const prvGuessEl = document.querySelector('.prvGuessEl');
-const guessOutcomeEl = document.querySelector('.guessOutcomeEl');
+const gameStatesEl = document.querySelector('.gameStatesEl');
 const differenceEl = document.querySelector('.differenceEl');
 
 let attemptsCount = 1;
-let maxAttempt = 10;
+let maxAttempt = 10; // try out a feature to set maxAttempt dynamically
 leftGuessesEl.textContent = maxAttempt;
 
 document
@@ -30,6 +30,9 @@ document
 
 function checkGuess() {
 	const userGuess = Number(inputEl.value);
+	const guessOutcomeEl = document.createElement('p');
+	guessOutcomeEl.setAttribute('class', 'guessOutcomeEl');
+	gameStatesEl.appendChild(guessOutcomeEl);
 
 	prvGuessEl.textContent += ` ${userGuess}`;
 
@@ -71,7 +74,7 @@ function checkGuess() {
 		}
 	}
 
-   inputEl.focus();
+	inputEl.focus();
 	inputEl.value = '';
 	attemptsCount++;
 	const leftGuesses = --maxAttempt;
@@ -83,8 +86,9 @@ submitEl.addEventListener('click', checkGuess);
 function setGameOver() {
 	restartButton = document.createElement('button');
 	restartButton.textContent = 'Restart Game';
-	gameStatesEl.appendChild(restartButton);
 	restartButton.setAttribute('class', 'restartButtonEl');
+	restartButton.textContent = 'Restart Game';
+	gameOverBtnEl.appendChild(restartButton);
 
 	setDisabledEl();
 
@@ -104,7 +108,7 @@ function restartGame() {
 	inputEl.focus();
 	leftGuessesEl.textContent = 10;
 
-	gameStatesEl.removeChild(restartButton);
+	gameOverBtnEl.removeChild(restartButton);
 
 	randomNumber =
 		Math.floor(Math.random() * (randomEnd - randomStart + 1)) + randomStart;

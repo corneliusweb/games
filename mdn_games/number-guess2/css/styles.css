@@ -12,6 +12,7 @@ body {
    min-height: 100dvh;
    width: 100%;
    background-color: #0A1931;
+   position: relative;
 }
 
 header {
@@ -52,15 +53,6 @@ header li button {
    box-shadow: unset;
 }
 
-h1 {
-   /* color: #3F0071; */
-   font-family: Orbitron, sans-serif;
-   font-size: 36px;
-   font-weight: bold;
-   color: #00FFFF;
-   margin-top: 15px;
-   margin-bottom: 5px;
-}
 
 /* global button */
 button {
@@ -125,7 +117,6 @@ main {
    display: flex;
    flex-direction: column;
    border-radius: 5px;
-   /* border: 5px solid #ffffff; */
 }
 
 .timerEl {
@@ -204,7 +195,7 @@ main {
 .form .submitEl {
    flex-basis: 85px;
    flex-shrink: 0;
-   background-color: #4CAF50;
+   background-color: #019c01;
    box-shadow: 2px 2px 4px #000;
    border: none;
    border-radius: 5px;
@@ -221,26 +212,13 @@ main {
    flex-direction: column;
    height: 150px;
    gap: 5px;
-   margin-top: 5px;
+   margin-top: 15px;
    color: #CCCCCC;
    position: relative;
 }
 
-.restartButtonEl {
-   align-self: flex-end;
-   flex-shrink: 0;
-   padding: 10px 10px;
-   background-color: orangered;
-   border-radius: 5px;
-   color: #FFFFFF;
-   position: absolute;
-   bottom: 3px;
-   right: 0;
-   font-weight: 500;
-}
-
 .gameStatesEl p {
-   font-size: 14px;
+   font-size: 14.5px;
    padding: 8px 0;
 }
 
@@ -252,11 +230,24 @@ main {
 
 .gameStatesEl .text {
    flex-shrink: 0;
-   font-size: 14px;
+   font-size: 14.5px;
    color: #CCCCCC;
 }
 
-.prvGuessEl {
+.gameStatesEl .guessOutcomeEl {
+   background-color:#a60808;
+   padding: 8px;
+   font-size: large;
+   width: 200px;
+   font-weight: 600;
+   text-align: center;
+   align-self: center;
+   margin-top: 15px;
+   border-radius: 4px;
+}
+
+.prvGuessEl,
+.answerEl {
    background-color: rgba(255, 255, 255, 0.05);
    border: 1px solid #2E4C6D;
    padding: 2px;
@@ -268,9 +259,133 @@ main {
 footer {
    background-color: #132743;
    width: 100%;
+   height: 45px;
    font-size: 15px;
    padding: 10px;
    color: #CCCCCC;
    text-align: center;
    margin-top: 30px;
+}
+
+/* modals */
+
+.gameLevelsModalBg,
+.gameOverModalBg {
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.92);
+   position: absolute;
+   top: 46px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.modals {
+   color: #CCCCCC;
+   background-color: #1A2744;
+   border: 2px solid #4A90E2;
+   border-radius: 10px;
+   box-shadow: 0 0 20px #4a90e280;
+   width: 300px;
+   max-width: 400px;
+   height: 320px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   padding: 20px 12px;
+   /* animation: open 1.5s ease-in-out; */
+}
+
+@keyframes open {
+   50% {transform: scale(0%);}
+   100% {transform: scale(100%);}
+}
+
+.modals h1 {
+   color: #00FFFF;
+   text-align: center;
+   font-weight: bold;
+   margin-bottom: 30px;
+   text-shadow: 0 1px 5px #00ffff80;
+}
+
+.modals button {
+   color: #fff;
+   padding: 10px 9px;
+   background-color: #018301;
+   border-radius: 5px;
+   font-size: 16px;
+   transition: .3s;
+}
+
+.modals button:hover {
+   transform: translateY(-5px);
+}
+
+.modals p {
+   padding: 8px 0;
+   font-size: 16px;
+   line-height: 1.5;
+}
+
+.gameOverBtnEl {
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+}
+.gameOverBtnEl .restartButtonEl {
+   background-color: orangered;
+}
+
+.answerEl {
+   padding: 5px 10px;
+   margin-left: 10px;
+   font-size: 1.2em;
+}
+
+.levels {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   flex-grow: 1;
+   flex-wrap: wrap;
+}
+.levels button {
+   width: 120px;
+   text-align: center;
+   transition: .3s;
+}
+.levels button:hover {
+   transform: none;
+   background-color:#196119;
+}
+
+.gameLevelsModal h1 {
+   border-bottom: 1px solid #4A90E2;
+   padding-bottom: 2px;
+   width: 100%;
+}
+
+.gameLevelsModal p {
+   font-size: 14px;
+}
+
+
+@media screen and (min-width: 700px) {
+   .modals {
+      width: 400px;
+      padding: 20px 50px;
+   }
+}
+
+/* hide  modals */
+
+
+.gameLevelsModalBg {
+   display: none;
+}
+.gameOverModalBg {
+   display: none;
 }
