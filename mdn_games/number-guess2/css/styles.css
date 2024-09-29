@@ -1,3 +1,20 @@
+@font-face {
+   font-family: 'orbitron';
+   src: url('/mdn_games/assets/fonts/Orbitron-Bold.ttf') format('truetype'),
+        url('/mdn_games/assets/fonts/Orbitron-ExtraBold.ttf') format('truetype'),
+        url('/mdn_games/assets/fonts/Roboto-Regular.ttf') format('truetype'),
+        url('/mdn_games/assets/fonts/Roboto-Bold.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Game-7';
+   src: url('/mdn_games/assets/fonts/game_font_7.ttf') format('truetype');
+   font-display: swap;
+}
+
+
 * {
    box-sizing: border-box;
    padding: 0;
@@ -44,6 +61,16 @@ header li a {
    text-decoration: none;
    color: #ffffff;
    font-size: inherit;
+}
+
+header a.active {
+   border: 2px solid #5e0202;
+   border-radius: 4px;
+   padding: 12px;
+   transition: .2s;
+}
+header a.active:hover {
+   background-color: #5e0202;
 }
 
 header li button {
@@ -104,12 +131,14 @@ main {
    border-bottom: 3px groove orangered;
    margin-bottom: 5px;
    border: 2px solid #CCCCCC;
+   box-shadow: 4px 4px 8px #000;
 }
 
 .leftGuessesEl {
    font-size: 68px;
    font-weight: 600;
    color: #fff;
+   font-family: 'Orbitron', sans-serif;
 }
 
 .left {
@@ -121,18 +150,20 @@ main {
 
 .timerEl {
    align-self: center;
-   font-family: Orbitron, sans-serif;
+   font-family: 'Game-7', sans-serif;
+   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
+   letter-spacing: 3px;
+   font-weight: bold;
    width: 150px;
    height: 80px;
-   box-shadow: 4px 4px 8px #000;
    background-color: #8B0000;
    border: 12px groove #FF0000;
    display: flex;
    justify-content: center;
    align-items: center;
    color: #fff;
-   font-size: 48px;
-   padding: 15px;
+   font-size: 50px;
+   padding: 8px;
    text-shadow: 2px 2px 2px #000;
 }
 
@@ -235,15 +266,16 @@ main {
 }
 
 .gameStatesEl .guessOutcomeEl {
-   background-color:#a60808;
+   background-color:#e5070770;
    padding: 8px;
    font-size: large;
-   width: 200px;
+   width: 100%;
+   display: none;
    font-weight: 600;
    text-align: center;
    align-self: center;
-   margin-top: 15px;
-   border-radius: 4px;
+   margin-top: 2px;
+   border-radius: 1px;
 }
 
 .prvGuessEl,
@@ -263,14 +295,32 @@ footer {
    font-size: 15px;
    padding: 10px;
    color: #CCCCCC;
-   text-align: center;
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
    margin-top: 30px;
+}
+footer .bi {
+   font-size: 18px;
+   color: #a7aeb1;
+   transition: .2s;
+}
+.bi:hover {
+   color:#fff;
+}
+.socials {
+   display: flex;
+   gap: 15px;
+   position: absolute;
+   left: 20px;
+   text-shadow: 0px 0px 0px 40px #000;
 }
 
 /* modals */
-
-.gameLevelsModalBg,
-.gameOverModalBg {
+.helpEl,
+.gameLevelsEl,
+.gameOverEl {
    width: 100%;
    height: 100%;
    background-color: rgba(0, 0, 0, 0.92);
@@ -279,6 +329,7 @@ footer {
    display: flex;
    justify-content: center;
    align-items: center;
+   z-index: 1;
 }
 
 .modals {
@@ -295,7 +346,8 @@ footer {
    align-items: center;
    justify-content: space-between;
    padding: 20px 12px;
-   /* animation: open 1.5s ease-in-out; */
+   position: relative;
+   animation: open 1.5s ease-in-out;
 }
 
 @keyframes open {
@@ -373,6 +425,30 @@ footer {
 }
 
 
+.helpEl p {
+   font-size: 14px;
+   padding: 3px;
+}
+
+.helpEl .modals button {
+   font-size: 24px;
+   padding: 0 10px;
+   text-align: center;
+   transform: none;
+   background: none;
+   position: absolute;
+   right: 10px;
+   top: 10px;
+   border: 2px solid #4A90E2;
+}
+.helpEl h1 {
+   margin-bottom: 18px;
+   margin-top: 22px;
+   border-bottom: 1px solid #00FFFF;
+   padding-bottom: 3px;
+   width: 100%;
+}
+
 @media screen and (min-width: 700px) {
    .modals {
       width: 400px;
@@ -382,10 +458,12 @@ footer {
 
 /* hide  modals */
 
-
-.gameLevelsModalBg {
+.gameLevelsEl {
    display: none;
 }
-.gameOverModalBg {
+.gameOverEl {
+   display: none;
+}
+.helpE {
    display: none;
 }

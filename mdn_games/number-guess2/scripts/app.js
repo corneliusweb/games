@@ -19,6 +19,7 @@ const gameOverBtnEl = document.querySelector('.gameOverBtnEl');
 const prvGuessEl = document.querySelector('.prvGuessEl');
 const gameStatesEl = document.querySelector('.gameStatesEl');
 const differenceEl = document.querySelector('.differenceEl');
+const guessOutcomeEl = document.querySelector('.guessOutcomeEl');
 
 let attemptsCount = 1;
 let maxAttempt = 10; // try out a feature to set maxAttempt dynamically
@@ -29,12 +30,10 @@ document
 	.addEventListener('submit', (e) => e.preventDefault());
 
 function checkGuess() {
-	const userGuess = Number(inputEl.value);
-	const guessOutcomeEl = document.createElement('p');
-	guessOutcomeEl.setAttribute('class', 'guessOutcomeEl');
-	gameStatesEl.appendChild(guessOutcomeEl);
-
-	prvGuessEl.textContent += ` ${userGuess}`;
+   const userGuess = Number(inputEl.value);
+   
+   prvGuessEl.textContent += ` ${userGuess}`;
+   guessOutcomeEl.style.display = 'block'
 
 	if (userGuess === randomNumber) {
 		setGameOver();

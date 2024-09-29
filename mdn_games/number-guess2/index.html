@@ -7,27 +7,22 @@
       
       <link rel="stylesheet" href="./css/styles.css">
       <script type="module" src="./scripts/app.js"></script>
+      <!-- Bootstrap icon -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
 
    <header>
       <ul>
          <li><a href="../">MDN Games</a></li>
-         <li><button>Rules</button></li>
-         <li><a href="../number-guess/">Guess v1.0</a></li>
+         <li><button>Help</button></li>
+         <li><a class="active" href="./">Guess 2.0</a></li>
+         <li><a href="../number-guess/">Guess 1.0</a></li>
       </ul>
    </header>
 
    <main>
-      <div class="description">
-         <!-- <details>
-            <summary>Open Game Description</summary>
-            <p>This is an upgraded version of <a href="../number-guess/">Number Guessing</a> game.</p>
-            <p>This version features a robust styling of the game and more intuitive dynamic features for overall best user experience</p>
-            <p>Unlike the first version, this version uses a dynamic range in each game to pick a number between <span>1 - 1000</span>. Can you guess the right answer in 10 attempts? Let's find out!!!</p>
-         </details> -->
-      </div>
-
+      
       <div class="game-card">
          <div class="top-features">
             <div class="left">
@@ -55,13 +50,14 @@
             <div class="gameStatesEl">
                <div><span class="text">Previous Guess:</span><span class="prvGuessEl"></span></div>
                <p class="differenceEl"></p>
+               <p class="guessOutcomeEl"></p>
             </div>
          </div> 
       </div>
 
       <!-- Modals for pop ups -->
 
-      <div class="gameOverModalBg gameOverEl">
+      <div class="gameOverEl">
          <div class="modals gameOverModal">
             <div class="text">
                <h1 class="gameOverHeadingEl"></h1>
@@ -73,31 +69,46 @@
             </div>
          </div>
       </div>
-
-      <div class="gameLevelsModalBg gameLevelsEl">
+      
+      <div class="gameLevelsEl">
          <div class="modals gameLevelsModal">
                <h1>Game Levels</h1>
                <div class="levels">
                   <div class="easy">
-                     <p>Numbers 1 - 100</p>
+                     <p>Random 1 - 100</p>
                      <button>Easy</button>
                   </div>
                   <div class="balanced">
-                     <p>Numbers 1 - 500</p>
+                     <p>Random 1 - 500</p>
                      <button>Balanced</button>
                   </div>
                   <div class="mind-reader">
-                     <p>Numbers 1 - 1000</p>
+                     <p>Random 1 - 1000</p>
                      <button>Mind Reader</button>
                   </div>
                </div>
          </div>
       </div>
 
+      <div class="helpEl">
+         <div class="modals helpBtnEl">
+            <button class="close">&times;</button>
+            <h1>Description</h1>
+            <div>
+               <p>This game tests your guess skill. You have the option to choose between 3 difficulty levels.</p>
+               <p>You have only 10 attempts to guess the correct number.</p>
+               <p>It is advisable that you start from <b>EASY</b> level to familiarize yourself with the game, and how it works.</p>
+            </div>
+         </div>
+      </div>
    </main>
    
    <footer>
-      <div class="socials"></div>
+      <div class="socials">
+         <a href="https://github.com/corneliusweb" target="_blank"> <i class="bi bi-github"></i></a>
+
+         <a href="https://x.com/corneliusweb_" target="_blank"><i class="bi bi-twitter-x"></i></a>
+      </div>
 
       <div class="copyright">
          <p>
