@@ -28,16 +28,16 @@ document
 	.querySelector('form')
 	.addEventListener('submit', (e) => e.preventDefault());
 
+const gameOverHeadingEl = document.querySelector('.gameOverHeadingEl');
+const answerParaEl = document.querySelector('.answerParaEl');
+const answerEl = document.querySelector('.answerEl');
+const gameOverMsgEl = document.querySelector('.gameOverMsgEl');
+
 function checkGuess() {
 	const userGuess = Number(inputEl.value);
 
 	prvGuessEl.textContent += ` ${userGuess}`;
 	guessOutcomeEl.style.display = 'block';
-
-	const gameOverHeadingEl = document.querySelector('.gameOverHeadingEl');
-	const answerParaEl = document.querySelector('.answerParaEl');
-	const answerEl = document.querySelector('.answerEl');
-	const gameOverMsgEl = document.querySelector('.gameOverMsgEl');
 
 	if (userGuess === randomNumber) {
 		setGameOver();
@@ -265,6 +265,8 @@ function startTimer() {
 			timer = 90;
 			timerEl.textContent = 90;
 			setGameOver();
+			gameOverHeadingEl.textContent = '⌛TIMEOUT!⌛';
+			gameOverMsgEl.textContent = `You really need the time to think, but you've to move quicker champ! Go again!`;
 		}
 	}, 1000);
 }
