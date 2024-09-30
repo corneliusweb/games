@@ -33,22 +33,24 @@ body {
 }
 
 header {
-   align-self: flex-start;
    width: 100%;
    background-color: #132743;
+   position: relative;
 }
 
 header ul {
    list-style-type: none;
    display: flex;
-   gap: 8px;
+   justify-content: space-between;
    align-items: center;
    font-size: 14px;
 }
 
+
 header li:first-child {
    margin-right: auto;
-   flex-basis: 180px;
+   flex-basis: 100px;
+   flex-shrink: 0;
 }
 
 header li:last-child {
@@ -62,22 +64,19 @@ header li a {
    color: #ffffff;
    font-size: inherit;
 }
+header li a:hover {
+   background-color: #4A90E2;
+}
 
 header a.active {
-   border: 2px solid #5e0202;
-   border-radius: 4px;
+   border-bottom: 2px solid #4A90E2;
+   border-right: 2px solid #4A90E2;
    padding: 12px;
    transition: .2s;
+   padding-left: 15px;
 }
 header a.active:hover {
-   background-color: #5e0202;
-}
-
-header li button {
-   padding: 14px 15px;
-   background: none;
-   color: #fff;
-   box-shadow: unset;
+   background-color: unset;
 }
 
 
@@ -92,15 +91,13 @@ button {
 main {
    display: flex;
    flex-direction: column;
-   /* gap: 15px; */
    align-items: center;
    flex-grow: 1;
 }
 
 .game-card {
    margin-top: 20px;
-   flex: 1;
-   width: 320px;
+   width: 290px;
    min-width: 280px;
    border: 1px solid #2E4C6D;
    padding: 10px;
@@ -111,6 +108,7 @@ main {
    background-color: rgba(255, 255, 255, 0.1);
    border-radius: 10px;
    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+   position: relative;
 }
 
 .top-features {
@@ -191,6 +189,27 @@ main {
 .actions button:hover {
    background-color: #3E5C7D;
 }
+
+/* help button */
+.bi-question-circle {
+   position: absolute;
+   color: #fff;
+   right: 2%;
+   top: 50%;
+   width: 1em;
+   font-size: 24px;
+   animation: bounce 1s infinite;
+}
+@keyframes bounce {
+   0%, 100% {
+      transform: translateY(0);
+   }
+   50% {
+      transform: translateY(-5px);
+      font-size: 27px;
+   }
+}
+
 
 .bottom-features {
    height: 200px;
@@ -295,7 +314,6 @@ footer {
    font-size: 15px;
    padding: 10px;
    color: #CCCCCC;
-   position: relative;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -310,11 +328,16 @@ footer .bi {
    color:#fff;
 }
 .socials {
-   display: flex;
-   gap: 15px;
    position: absolute;
-   left: 20px;
+   left: 10px;
+   display: flex;
+   gap: 10px;
    text-shadow: 0px 0px 0px 40px #000;
+}
+
+footer .copyright {
+   flex: 0 1 auto;
+   text-align: center;
 }
 
 /* modals */
@@ -430,7 +453,7 @@ footer .bi {
    padding: 3px;
 }
 
-.helpEl .modals button {
+.helpEl .modals .close {
    font-size: 24px;
    padding: 0 10px;
    text-align: center;
@@ -441,6 +464,10 @@ footer .bi {
    top: 10px;
    border: 2px solid #4A90E2;
 }
+.helpEl .close:hover {
+   background-color: #4A90E2;
+}
+
 .helpEl h1 {
    margin-bottom: 18px;
    margin-top: 22px;
@@ -449,21 +476,26 @@ footer .bi {
    width: 100%;
 }
 
+/* Media Query */
 @media screen and (min-width: 700px) {
    .modals {
       width: 400px;
       padding: 20px 50px;
    }
+
+   .game-card {
+      width: 340px;
+   }
 }
 
-/* hide  modals */
 
+/* hide  modals */
 .gameLevelsEl {
    display: none;
 }
 .gameOverEl {
    display: none;
 }
-.helpE {
+.helpEl {
    display: none;
 }

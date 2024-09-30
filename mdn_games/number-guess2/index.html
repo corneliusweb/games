@@ -1,121 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Guess 2.0</title>
-      
-      <link rel="stylesheet" href="./css/styles.css">
-      <script type="module" src="./scripts/app.js"></script>
-      <!-- Bootstrap icon -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Guess 2.0</title>
 
-   <header>
-      <ul>
-         <li><a href="../">MDN Games</a></li>
-         <li><button>Help</button></li>
-         <li><a class="active" href="./">Guess 2.0</a></li>
-         <li><a href="../number-guess/">Guess 1.0</a></li>
-      </ul>
-   </header>
+		<link rel="stylesheet" href="./css/styles.css" />
+		<script type="module" src="./scripts/app.js"></script>
+		<!-- Bootstrap icon -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul class="navEl">
+					<li><a class="active" href="./">Guess 2.0</a></li>
+					<li><a href="../number-guess/">Guess 1.0</a></li>
+               <!-- Narrow screen menu icon -->
+				</ul>
+			</nav>
+		</header>
 
-   <main>
-      
-      <div class="game-card">
-         <div class="top-features">
-            <div class="left">
-               <div class="count-board">
-                  <p>GUESSES LEFT</p>
-                  <div class="leftGuessesEl"></div>
-               </div>
-               <div class="timerEl">45</div>
-            </div>
-            <div class="actions">
-               <h2>ACTIONS</h2>
-               <button class="startGameEl">Start Game</button>
-               <button class="topUpEl">Add Guess</button>
-               <button class="resetGamelEl">Reset Game</button>
-            </div>
-         </div>
+		<main>
+			<div class="game-card">
+				<div class="top-features">
+					<div class="left">
+						<div class="count-board">
+							<p>GUESSES LEFT</p>
+							<div class="leftGuessesEl"></div>
+						</div>
+						<div class="timerEl">45</div>
+					</div>
+					<div class="actions">
+						<h2>ACTIONS</h2>
+						<button class="startGameEl">Start Game</button>
+						<button class="topUpEl">Change Level</button>
+					</div>
+				</div>
 
-         <div class="bottom-features">
-            <label>Enter guess:</label>
-            <form class="form">
-               <input type="number" id="number" name="number" class="inputEl" min="1" max="1000">
-               <input type="submit" id="submit" name="submit" class="submitEl" value="Guess">
-            </form>
+            <!-- Help button -->
+             <i class="bi bi-question-circle helpBtnEl"></i>
 
-            <div class="gameStatesEl">
-               <div><span class="text">Previous Guess:</span><span class="prvGuessEl"></span></div>
-               <p class="differenceEl"></p>
-               <p class="guessOutcomeEl"></p>
-            </div>
-         </div> 
-      </div>
+				<div class="bottom-features">
+					<label>Enter guess:</label>
+					<form class="form">
+						<input
+							type="number"
+							id="number"
+							name="number"
+							class="inputEl"
+							min="1"
+							max="1000"
+						/>
+						<input
+							type="submit"
+							id="submit"
+							name="submit"
+							class="submitEl"
+							value="Guess"
+						/>
+					</form>
 
-      <!-- Modals for pop ups -->
+					<div class="gameStatesEl">
+						<div>
+							<span class="text">Previous Guess:</span
+							><span class="prvGuessEl"></span>
+						</div>
+						<p class="differenceEl"></p>
+						<p class="guessOutcomeEl"></p>
+					</div>
+				</div>
+			</div>
 
-      <div class="gameOverEl">
-         <div class="modals gameOverModal">
-            <div class="text">
-               <h1 class="gameOverHeadingEl"></h1>
-               <p class="answerParaEl"><span class="answerEl"></span></p>
-               <p class="gameOverMsgEl"></p>
-            </div>
-            <div class="gameOverBtnEl">
-               <button class="changeLevelEl">Change Level</button>
-            </div>
-         </div>
-      </div>
-      
-      <div class="gameLevelsEl">
-         <div class="modals gameLevelsModal">
-               <h1>Game Levels</h1>
-               <div class="levels">
-                  <div class="easy">
-                     <p>Random 1 - 100</p>
-                     <button>Easy</button>
-                  </div>
-                  <div class="balanced">
-                     <p>Random 1 - 500</p>
-                     <button>Balanced</button>
-                  </div>
-                  <div class="mind-reader">
-                     <p>Random 1 - 1000</p>
-                     <button>Mind Reader</button>
-                  </div>
-               </div>
-         </div>
-      </div>
+			<!-- Modals for pop ups -->
 
-      <div class="helpEl">
-         <div class="modals helpBtnEl">
-            <button class="close">&times;</button>
-            <h1>Description</h1>
-            <div>
-               <p>This game tests your guess skill. You have the option to choose between 3 difficulty levels.</p>
-               <p>You have only 10 attempts to guess the correct number.</p>
-               <p>It is advisable that you start from <b>EASY</b> level to familiarize yourself with the game, and how it works.</p>
-            </div>
-         </div>
-      </div>
-   </main>
-   
-   <footer>
-      <div class="socials">
-         <a href="https://github.com/corneliusweb" target="_blank"> <i class="bi bi-github"></i></a>
+			<div class="gameOverEl">
+				<div class="modals gameOverModal">
+					<div class="text">
+						<h1 class="gameOverHeadingEl"></h1>
+						<p class="answerParaEl"><span class="answerEl"></span></p>
+						<p class="gameOverMsgEl"></p>
+					</div>
+					<div class="gameOverBtnEl">
+						<button class="changeLevelEl">Change Level</button>
+					</div>
+				</div>
+			</div>
 
-         <a href="https://x.com/corneliusweb_" target="_blank"><i class="bi bi-twitter-x"></i></a>
-      </div>
+			<div class="gameLevelsEl">
+				<div class="modals gameLevelsModal">
+					<h1>Game Levels</h1>
+					<div class="levels">
+						<div class="easy">
+							<p>Random 1 - 100</p>
+							<button>Easy</button>
+						</div>
+						<div class="balanced">
+							<p>Random 1 - 500</p>
+							<button>Balanced</button>
+						</div>
+						<div class="mind-reader">
+							<p>Random 1 - 1000</p>
+							<button>Mind Reader</button>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <div class="copyright">
-         <p>
-            &copy; corneliusweb 2024
-         </p>
-      </div>
-   </footer>
+			<div class="helpEl">
+				<div class="modals">
+					<button class="close">&times;</button>
+					<h1>Description</h1>
+					<div>
+						<p>
+							This game tests your guess skill. You have the option to
+							choose between 3 difficulty levels.
+						</p>
+						<p>You have only 10 attempts to guess the correct number.</p>
+						<p>
+							It is advisable that you start from <b>EASY</b> level to
+							familiarize yourself with the game, and how it works.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
 
-</body>
+		<footer>
+			<div class="socials">
+				<a href="https://github.com/corneliusweb" target="_blank">
+					<i class="bi bi-github"></i
+				></a>
+
+				<a href="https://x.com/corneliusweb_" target="_blank"
+					><i class="bi bi-twitter-x"></i
+				></a>
+			</div>
+
+			<div class="copyright">
+				<p>&copy; corneliusweb 2024</p>
+			</div>
+		</footer>
+	</body>
 </html>
