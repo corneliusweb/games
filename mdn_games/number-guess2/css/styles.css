@@ -97,7 +97,8 @@ main {
 
 .game-card {
    margin-top: 20px;
-   width: 290px;
+   width: 95dvw;
+   max-width: 350px;
    min-width: 280px;
    border: 1px solid #2E4C6D;
    padding: 10px;
@@ -207,7 +208,7 @@ main {
       transform: translateY(0);
    }
    50% {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       font-size: 27px;
    }
 }
@@ -299,8 +300,7 @@ main {
    border-radius: 1px;
 }
 
-.prvGuessEl,
-.answerEl {
+.prvGuessEl {
    background-color: rgba(255, 255, 255, 0.05);
    border: 1px solid #2E4C6D;
    padding: 2px;
@@ -373,8 +373,8 @@ footer .copyright {
    justify-content: space-between;
    padding: 20px 12px;
    position: relative;
-   animation: open .8s ease-in-out;
-   transition: .8s;
+   animation: open .5s ease-in-out;
+   transition: .5s;
 }
 
 @keyframes open {
@@ -386,8 +386,8 @@ footer .copyright {
    color: #00FFFF;
    text-align: center;
    font-weight: bold;
-   margin-bottom: 30px;
-   text-shadow: 0 1px 5px #00ffff80;
+   margin-bottom: 25px;
+   font-size: 28px;
 }
 
 .modals button {
@@ -404,8 +404,8 @@ footer .copyright {
 }
 
 .modals p {
-   padding: 8px 0;
-   font-size: 16px;
+   padding: 10px 0;
+   font-size: 14px;
    line-height: 1.5;
 }
 
@@ -416,12 +416,6 @@ footer .copyright {
 }
 .gameOverBtnEl .restartButtonEl {
    background-color: orangered;
-}
-
-.answerEl {
-   padding: 5px 10px;
-   margin-left: 10px;
-   font-size: 1.2em;
 }
 
 .levels {
@@ -473,10 +467,9 @@ footer .copyright {
 }
 
 .helpEl h1 {
-   margin-bottom: 18px;
    margin-top: 22px;
    border-bottom: 1px solid #00FFFF;
-   padding-bottom: 3px;
+   padding-bottom: 5px;
    width: 100%;
 }
 
@@ -484,11 +477,7 @@ footer .copyright {
 @media screen and (min-width: 700px) {
    .modals {
       width: 400px;
-      padding: 20px 50px;
-   }
-
-   .game-card {
-      width: 340px;
+      padding: 20px 40px;
    }
 }
 

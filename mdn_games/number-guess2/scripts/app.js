@@ -4,11 +4,10 @@ const mediumRandom = Math.floor(Math.random() * 250) + 250;
 const highestRandom = Math.floor(Math.random() * 500) + 500;
 
 let randomNumber = lowestRandom;
-// for testing
-// let randomNumber = 400;
 
 // select global html elements
-let timer;
+let timer = 90;
+let countdown;
 let restartButton;
 
 const inputEl = document.querySelector('.inputEl');
@@ -35,24 +34,36 @@ function checkGuess() {
 	prvGuessEl.textContent += ` ${userGuess}`;
 	guessOutcomeEl.style.display = 'block';
 
+	const gameOverHeadingEl = document.querySelector('.gameOverHeadingEl');
+	const answerParaEl = document.querySelector('.answerParaEl');
+	const answerEl = document.querySelector('.answerEl');
+	const gameOverMsgEl = document.querySelector('.gameOverMsgEl');
+
 	if (userGuess === randomNumber) {
 		setGameOver();
 		differenceEl.textContent = '';
+		gameOverHeadingEl.textContent = 'CHAMPION ALERT!🎉';
+		answerEl.textContent = randomNumber;
+		answerParaEl.textContent = `The answer is  ${answerEl.textContent}`;
 
 		if (attemptsCount < 5) {
-			guessOutcomeEl.textContent = `That was a crazy move! You're a genius!!!`;
+			gameOverMsgEl.textContent = `You're not just a winner; you're a mastermind!🧠 Your keen instincts and sharp mind just cracked the code. Keep shining and guess on — the world is at your fingertips!`;
 		} else {
-			guessOutcomeEl.textContent = `That's correct! Congrats!!`;
+			gameOverMsgEl.textContent = `Well done, Mastermind! You cracked the code like a true genius. Victory is sweet when it's earned through sheer brilliance. Ready for the next challenge?`;
 		}
 	} else if (attemptsCount === 10) {
 		setGameOver();
 		differenceEl.textContent = '';
-		guessOutcomeEl.textContent = '!!!GAME OVER!!!';
+		gameOverHeadingEl.textContent = 'GAME OVER!💔';
+		gameOverMsgEl.textContent = `Don't worry, genius! Every great mind has a few missteps before reaching victory. 🚀 Dust yourself off and give it another go. Success is just one guess away! 💡 You've got this!`;
+
+		answerEl.textContent = randomNumber;
+		answerParaEl.textContent = `The correct answer is  ${answerEl.textContent}`;
 	} else {
 		const difference = Math.abs(randomNumber - userGuess);
-		if (difference < 10) {
+		if (difference < 5) {
 			differenceEl.textContent = `That was a close call! You got this champ!`;
-		} else if (difference <= 50) {
+		} else if (difference <= 10) {
 			differenceEl.textContent = `You're not far from home. You got this!`;
 		} else if (difference > 50) {
 			differenceEl.textContent = `You're far away! Go again.`;
@@ -113,30 +124,36 @@ showLevel();
 // set game levels
 function setEasy() {
 	randomNumber = lowestRandom;
+	resetTimer();
+	enabledStartBtn();
 }
 document.querySelector('.levels .easy').addEventListener('click', () => {
-	setEasy();
 	gameLevelModal.style.display = 'none';
+	setEasy();
 });
 
 function setBalanced() {
 	randomNumber =
 		Math.floor(Math.random() * (mediumRandom - lowestRandom + 1)) +
 		lowestRandom;
+	resetTimer();
+	enabledStartBtn();
 }
 document.querySelector('.levels .balanced').addEventListener('click', () => {
-	setBalanced();
 	gameLevelModal.style.display = 'none';
+	setBalanced();
 });
 
 function setMindReader() {
 	randomNumber =
 		Math.floor(Math.random() * (highestRandom - lowestRandom + 1)) +
 		lowestRandom;
+	resetTimer();
+	enabledStartBtn();
 }
 document.querySelector('.levels .mind-reader').addEventListener('click', () => {
-	setMindReader();
 	gameLevelModal.style.display = 'none';
+	setMindReader();
 });
 
 const helpBtn = document.querySelector('.helpBtnEl');
@@ -165,6 +182,7 @@ function setGameOver() {
 
 	enabledStartBtn();
 	setDisabledEl();
+	resetTimer();
 
 	restartButton.addEventListener('click', restartGame);
 }
@@ -187,7 +205,7 @@ function restartGame() {
 	gameOverModal.style.display = 'none';
 
 	showLevel();
-	unsetDisabledEl();
+	setDisabledEl();
 }
 
 function setDisabledEl() {
@@ -215,6 +233,8 @@ const startBtn = document.querySelector('.startGameEl');
 function startGame() {
 	unsetDisabledEl();
 	disableStartBtn();
+	startTimer();
+	inputEl.focus();
 }
 startBtn.addEventListener('click', () => {
 	startGame();
@@ -230,4 +250,27 @@ function enabledStartBtn() {
 	startBtn.disabled = false;
 	startBtn.style.cursor = 'pointer';
 	startBtn.style.opacity = '1';
+}
+
+const timerEl = document.querySelector('.timerEl');
+timerEl.textContent = 90;
+
+function startTimer() {
+	countdown = setInterval(() => {
+		timer--;
+		timerEl.textContent = timer;
+
+		if (timer <= 0) {
+			clearInterval(countdown);
+			timer = 90;
+			timerEl.textContent = 90;
+			setGameOver();
+		}
+	}, 1000);
+}
+
+function resetTimer() {
+	clearInterval(countdown);
+	timer = 90;
+	timerEl.textContent = 90;
 }
