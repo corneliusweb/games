@@ -193,8 +193,10 @@ main {
 /* help button */
 .bi-question-circle {
    position: absolute;
-   color: #fff;
-   right: 2%;
+   color: #CCCCCC;
+   text-shadow: 2px 2px 4px #0A1931;
+   cursor: pointer;
+   right: 3%;
    top: 50%;
    width: 1em;
    font-size: 24px;
@@ -205,7 +207,7 @@ main {
       transform: translateY(0);
    }
    50% {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       font-size: 27px;
    }
 }
@@ -353,6 +355,7 @@ footer .copyright {
    justify-content: center;
    align-items: center;
    z-index: 1;
+   transition: 1s;
 }
 
 .modals {
@@ -370,11 +373,12 @@ footer .copyright {
    justify-content: space-between;
    padding: 20px 12px;
    position: relative;
-   animation: open 1.5s ease-in-out;
+   animation: open .8s ease-in-out;
+   transition: .8s;
 }
 
 @keyframes open {
-   50% {transform: scale(0%);}
+   0%, 50% {transform: scale(0%);}
    100% {transform: scale(100%);}
 }
 
