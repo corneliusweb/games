@@ -1,29 +1,28 @@
-// generate dynamic range
+const inputEl = document.querySelector('.inputEl');
+const submitEl = document.querySelector('.submitEl');
+const leftGuessesEl = document.querySelector('.leftGuessesEl');
+const gameOverBtnEl = document.querySelector('.gameOverBtnEl');
+const prvGuessEl = document.querySelector('.prvGuessEl');
+const differenceEl = document.querySelector('.differenceEl');
+const guessOutcomeEl = document.querySelector('.guessOutcomeEl');
+
+// Generate dynamic ranges
 const lowestRandom = Math.floor(Math.random() * 100) + 1;
 const mediumRandom = Math.floor(Math.random() * 250) + 250;
 const highestRandom = Math.floor(Math.random() * 500) + 500;
 
+// Set default level
 let randomNumber = lowestRandom;
 
-// select global html elements
 let timer = 90;
 let countdown;
 let restartButton;
-
-const inputEl = document.querySelector('.inputEl');
-const submitEl = document.querySelector('.submitEl');
-
-const leftGuessesEl = document.querySelector('.leftGuessesEl');
-const gameOverBtnEl = document.querySelector('.gameOverBtnEl');
-const prvGuessEl = document.querySelector('.prvGuessEl');
-const gameStatesEl = document.querySelector('.gameStatesEl');
-const differenceEl = document.querySelector('.differenceEl');
-const guessOutcomeEl = document.querySelector('.guessOutcomeEl');
-
 let attemptsCount = 1;
 let maxAttempt = 10; // try out a feature to set maxAttempt dynamically
+
 leftGuessesEl.textContent = maxAttempt;
 
+// Prevent form refresh on submit
 document
 	.querySelector('form')
 	.addEventListener('submit', (e) => e.preventDefault());
@@ -36,11 +35,7 @@ const gameOverMsgEl = document.querySelector('.gameOverMsgEl');
 function checkGuess() {
 	const userGuess = Number(inputEl.value);
 
-	prvGuessEl.textContent += ` ${userGuess}`;
-	guessOutcomeEl.style.display = 'block';
-
 	if (userGuess === randomNumber) {
-		setGameOver();
 		differenceEl.textContent = '';
 		gameOverHeadingEl.textContent = 'CHAMPION ALERT!🎉';
 		answerEl.textContent = randomNumber;
@@ -51,37 +46,42 @@ function checkGuess() {
 		} else {
 			gameOverMsgEl.textContent = `Well done, Mastermind! You cracked the code like a true genius. Victory is sweet when it's earned through sheer brilliance. Ready for the next challenge?`;
 		}
-	} else if (attemptsCount === 10) {
+
 		setGameOver();
+	} else if (attemptsCount === 10) {
 		differenceEl.textContent = '';
 		gameOverHeadingEl.textContent = 'GAME OVER!💔';
-		gameOverMsgEl.textContent = `Don't worry, genius! Every great mind has a few missteps before reaching victory. 🚀 Dust yourself off and give it another go. Success is just one guess away! 💡 You've got this!`;
-
+		gameOverMsgEl.textContent = `Don't worry, genius! Every great mind has a few missteps before reaching victory. 🚀 Dust yourself off and give it another go. Success is just one guess away! You've got this!`;
 		answerEl.textContent = randomNumber;
 		answerParaEl.textContent = `The correct answer is  ${answerEl.textContent}`;
+
+		setGameOver();
 	} else {
+		// Check distance between user guess and the random
 		const difference = Math.abs(randomNumber - userGuess);
 		if (difference < 5) {
 			differenceEl.textContent = `That was a close call! You got this champ!`;
-		} else if (difference <= 10) {
+		} else if (difference < 10) {
 			differenceEl.textContent = `You're not far from home. You got this!`;
 		} else if (difference > 50) {
 			differenceEl.textContent = `You're far away! Go again.`;
 		}
 		guessOutcomeEl.textContent = 'Wrong!';
 
-		if (inputEl.value > 1000 || inputEl.value < 1) {
-			prvGuessEl.textContent = '';
+		// Prevent the recording of invalid inputs
+		if (userGuess > 1000 || userGuess < 1) {
 			difference.textContent = '';
-			guessOutcomeEl.textContent = 'Invalid! Pick numbers between 1 - 1000';
 
+         // Pause guesses left
 			if (maxAttempt !== 10) {
 				++maxAttempt;
 			} else {
 				maxAttempt += 1;
 			}
-			--attemptsCount;
+         --attemptsCount;
 		}
+		prvGuessEl.textContent += ` ${userGuess}`;
+		guessOutcomeEl.style.display = 'block';
 	}
 
 	inputEl.focus();
@@ -97,33 +97,29 @@ const gameOverModal = document.querySelector('.gameOverEl');
 const gameLevelModal = document.querySelector('.gameLevelsEl');
 const changeLevelBtn = document.querySelectorAll('.changeLevelEl');
 
-function showLevel() {
+function showLevels() {
 	for (const button of changeLevelBtn) {
 		button.addEventListener('click', () => {
 			gameLevelModal.style.display = 'flex';
 			gameOverModal.style.display = 'none';
-
-			const paras = document.querySelectorAll('.gameStatesEl p');
-			for (const para of paras) {
-				para.textContent = '';
-			}
-			prvGuessEl.textContent = '';
 
 			attemptsCount = 1;
 			maxAttempt = 10;
 			inputEl.value = '';
 			guessOutcomeEl.style.display = 'none';
 			inputEl.focus();
-			leftGuessesEl.textContent = 10;
-			setDisabledEl();
+         leftGuessesEl.textContent = 10;
+         
+         setDisabledEl();
+         clearGameStates();
 		});
 	}
 }
-showLevel();
+showLevels();
 
-// set game levels
+// Set game levels
 function setEasy() {
-	randomNumber = lowestRandom;
+	randomNumber = Math.floor(Math.random() * 100) + 1;
 	resetTimer();
 	enabledStartBtn();
 }
@@ -159,6 +155,7 @@ document.querySelector('.levels .mind-reader').addEventListener('click', () => {
 const helpBtn = document.querySelector('.helpBtnEl');
 const helpModal = document.querySelector('.helpEl');
 
+// Disable form and display description
 document.addEventListener('DOMContentLoaded', (event) => {
 	helpModal.style.display = 'flex';
 	setDisabledEl();
@@ -171,6 +168,7 @@ helpBtn.addEventListener('click', () => {
 	helpModal.style.display = 'flex';
 });
 
+// Set game over
 function setGameOver() {
 	restartButton = document.createElement('button');
 	restartButton.textContent = 'Restart Game';
@@ -188,11 +186,6 @@ function setGameOver() {
 }
 
 function restartGame() {
-	const paras = document.querySelectorAll('.gameStatesEl p');
-	for (const para of paras) {
-		para.textContent = '';
-	}
-	prvGuessEl.textContent = '';
 
 	attemptsCount = 1;
 	maxAttempt = 10;
@@ -204,8 +197,9 @@ function restartGame() {
 	gameOverBtnEl.removeChild(restartButton);
 	gameOverModal.style.display = 'none';
 
-	showLevel();
-	setDisabledEl();
+	showLevels();
+   setDisabledEl();
+   clearGameStates();
 }
 
 function setDisabledEl() {
@@ -235,6 +229,7 @@ function startGame() {
 	disableStartBtn();
 	startTimer();
 	inputEl.focus();
+	gameOverBtnEl.removeChild(restartButton);
 }
 startBtn.addEventListener('click', () => {
 	startGame();
@@ -264,9 +259,10 @@ function startTimer() {
 			clearInterval(countdown);
 			timer = 90;
 			timerEl.textContent = 90;
-			setGameOver();
 			gameOverHeadingEl.textContent = '⌛TIMEOUT!⌛';
 			gameOverMsgEl.textContent = `You really need the time to think, but you've to move quicker champ! Go again!`;
+
+			setGameOver();
 		}
 	}, 1000);
 }
@@ -275,4 +271,12 @@ function resetTimer() {
 	clearInterval(countdown);
 	timer = 90;
 	timerEl.textContent = 90;
+}
+
+function clearGameStates() {
+   const paras = document.querySelectorAll('.gameStatesEl p');
+	for (const para of paras) {
+		para.textContent = '';
+	}
+	prvGuessEl.textContent = '';
 }
