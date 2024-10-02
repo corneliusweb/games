@@ -366,7 +366,8 @@ footer .copyright {
    box-shadow: 0 0 20px #4a90e280;
    width: 300px;
    max-width: 400px;
-   height: 320px;
+   height: auto;
+   min-height: 320px;
    display: flex;
    flex-direction: column;
    align-items: center;

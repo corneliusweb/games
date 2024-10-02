@@ -71,7 +71,7 @@ function checkGuess() {
 		} else if (difference <= 10) {
 			differenceEl.textContent = `You're not far from home. You got this!`;
 		} else if (difference > 10 && difference < 50) {
-			differenceEl.textContent = `Get it together, you are close.`;
+			differenceEl.textContent = `Get it together, you are not that far.`;
 		} else {
 			differenceEl.textContent = `You're far away! Go again.`;
 		}
