@@ -105,17 +105,23 @@ function checkCurrentLevel() {
 		timer = 95;
 		maxAttempt = 13;
 		timerEl.textContent = '95';
-		leftGuessesEl.textContent = '13';
+      leftGuessesEl.textContent = '13';
+      
+		setBalanced();
 	} else if (currentLevel === 'mindReader') {
 		timer = 100;
 		maxAttempt = 15;
 		timerEl.textContent = '100';
-		leftGuessesEl.textContent = '15';
+      leftGuessesEl.textContent = '15';
+      
+		setMindReader();
 	} else if (currentLevel === 'easy') {
 		timer = 90;
 		maxAttempt = 10;
 		timerEl.textContent = '90';
-		leftGuessesEl.textContent = '10';
+      leftGuessesEl.textContent = '10';
+      
+		setEasy();
 	}
 }
 
