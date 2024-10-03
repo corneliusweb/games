@@ -77,17 +77,16 @@ function checkGuess() {
 			} else {
 				differenceEl.textContent = `You're far away! Go again.`;
 			}
-		} else {
-			if (userGuess > randomNumber) {
-				differenceEl.textContent = 'Last guess was too high';
-			}
-			differenceEl.textContent = 'Last guess was too low';
+		} else if (userGuess > randomNumber) {
+			differenceEl.textContent = 'Last guess was too high.';
+		} else if (userGuess < randomNumber) {
+			differenceEl.textContent = 'Last guess was too low.';
 		}
 
 		// prevent the recording of invalid inputs
 		if (userGuess > 1000 || userGuess < 1) {
-         differenceEl.textContent = 'Invalid! Please enter numbers 1 - 1000';
-         	guessOutcomeEl.style.display = 'none';
+			differenceEl.textContent = 'Invalid! Please enter numbers 1 - 1000';
+			guessOutcomeEl.style.display = 'none';
 
 			// pause guesses left
 			if (maxAttempt !== 10) {
@@ -315,8 +314,8 @@ function startTimer() {
 		if (timer <= 0) {
 			clearInterval(countdown);
 			gameOverHeadingEl.textContent = '⌛TIMEOUT!⌛';
-         gameOverMsgEl.textContent = `You really need the time to think, but you've to move quicker champ! Go again!`;
-         answerEl.textContent = randomNumber;
+			gameOverMsgEl.textContent = `You really need the time to think, but you've to move quicker champ! Go again!`;
+			answerEl.textContent = randomNumber;
 			answerParaEl.textContent = `The correct answer is  ${answerEl.textContent}`;
 
 			setGameOver();
