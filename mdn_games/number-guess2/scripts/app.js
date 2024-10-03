@@ -315,7 +315,9 @@ function startTimer() {
 		if (timer <= 0) {
 			clearInterval(countdown);
 			gameOverHeadingEl.textContent = '⌛TIMEOUT!⌛';
-			gameOverMsgEl.textContent = `You really need the time to think, but you've to move quicker champ! Go again!`;
+         gameOverMsgEl.textContent = `You really need the time to think, but you've to move quicker champ! Go again!`;
+         answerEl.textContent = randomNumber;
+			answerParaEl.textContent = `The correct answer is  ${answerEl.textContent}`;
 
 			setGameOver();
 			checkCurrentLevel();
