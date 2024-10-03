@@ -66,20 +66,28 @@ function checkGuess() {
 	} else {
 		// check distance between user guess and the random
 		const difference = Math.abs(randomNumber - userGuess);
-		if (difference <= 5) {
-			differenceEl.textContent = `That was a close call! You got this champ!`;
-		} else if (difference <= 10) {
-			differenceEl.textContent = `You're not far from home. You got this!`;
-		} else if (difference > 10 && difference < 50) {
-			differenceEl.textContent = `Get it together, you are not that far.`;
+
+		if (currentLevel === 'balanced' || currentLevel === 'mindReader') {
+			if (difference <= 5) {
+				differenceEl.textContent = `That was a close call! You got this champ!`;
+			} else if (difference <= 10) {
+				differenceEl.textContent = `You're not far from home. You got this!`;
+			} else if (difference > 10 && difference < 50) {
+				differenceEl.textContent = `Get it together, you are not that far.`;
+			} else {
+				differenceEl.textContent = `You're far away! Go again.`;
+			}
 		} else {
-			differenceEl.textContent = `You're far away! Go again.`;
+			if (userGuess > randomNumber) {
+				differenceEl.textContent = 'Last guess was too high';
+			}
+			differenceEl.textContent = 'Last guess was too low';
 		}
-		guessOutcomeEl.textContent = 'Wrong!';
 
 		// prevent the recording of invalid inputs
 		if (userGuess > 1000 || userGuess < 1) {
-			differenceEl.textContent = 'Invalid! Please enter numbers 1 - 1000';
+         differenceEl.textContent = 'Invalid! Please enter numbers 1 - 1000';
+         	guessOutcomeEl.style.display = 'none';
 
 			// pause guesses left
 			if (maxAttempt !== 10) {
@@ -91,6 +99,7 @@ function checkGuess() {
 		} else {
 			prvGuessEl.textContent += ` ${userGuess}`;
 			guessOutcomeEl.style.display = 'block';
+			guessOutcomeEl.textContent = 'Wrong!';
 		}
 	}
 
