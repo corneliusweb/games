@@ -1,11 +1,18 @@
 @font-face {
-   font-family: 'orbitron';
+   font-family: 'Orbitron';
    src: url('/mdn_games/assets/fonts/Orbitron-Bold.ttf') format('truetype'),
-        url('/mdn_games/assets/fonts/Orbitron-ExtraBold.ttf') format('truetype'),
-        url('/mdn_games/assets/fonts/Roboto-Regular.ttf') format('truetype'),
-        url('/mdn_games/assets/fonts/Roboto-Bold.ttf') format('truetype');
+      url('/mdn_games/assets/fonts/Orbitron-ExtraBold.ttf') format('truetype'),
+      url('/mdn_games/assets/fonts/Roboto-Regular.ttf') format('truetype');
    font-weight: normal;
    font-style: normal;
+}
+
+@font-face {
+   font-family: 'Roboto';
+   src: url('/mdn_games/assets/fonts/Roboto-Regular.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
 }
 
 @font-face {
@@ -22,7 +29,7 @@
 }
 
 body {
-   font-family: 'Noto Mono', Arial, "Helvetica Neue", Helvetica, sans-serif;
+   font-family: 'Roboto', Arial, "Helvetica Neue", Helvetica, sans-serif;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -64,6 +71,7 @@ header li a {
    color: #ffffff;
    font-size: inherit;
 }
+
 header li a:hover {
    background-color: #4A90E2;
 }
@@ -75,6 +83,7 @@ header a.active {
    transition: .2s;
    padding-left: 15px;
 }
+
 header a.active:hover {
    background-color: unset;
 }
@@ -96,13 +105,15 @@ main {
 }
 
 .game-card {
-   margin-top: 20px;
    width: 95dvw;
+   margin-top: 20px;
    max-width: 350px;
    min-width: 280px;
+   height: fit-content;
    border: 1px solid #2E4C6D;
    padding: 10px;
-   gap: 35px;
+   flex-grow: 1;
+   gap: 45px;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -119,7 +130,7 @@ main {
 
 .top-features .count-board {
    width: 150px;
-   background-color: rgb(13, 9, 3);
+   background-color: #0d0903;
    color: #00FF00;
    text-align: center;
    padding: 8px;
@@ -203,10 +214,14 @@ main {
    font-size: 24px;
    animation: bounce 1s infinite;
 }
+
 @keyframes bounce {
-   0%, 100% {
+
+   0%,
+   100% {
       transform: translateY(0);
    }
+
    50% {
       transform: translateY(-2px);
       font-size: 27px;
@@ -215,7 +230,7 @@ main {
 
 
 .bottom-features {
-   height: 200px;
+   height: auto;
    display: flex;
    flex-direction: column;
    gap: 5px;
@@ -256,6 +271,7 @@ main {
    color: #fff;
    cursor: pointer;
 }
+
 .form .submitEl:hover {
    background-color: #388E3C
 }
@@ -288,7 +304,7 @@ main {
 }
 
 .gameStatesEl .guessOutcomeEl {
-   background-color:#e5070770;
+   background-color: #e5070770;
    padding: 8px;
    font-size: large;
    width: 100%;
@@ -321,14 +337,17 @@ footer {
    align-items: center;
    margin-top: 30px;
 }
+
 footer .bi {
    font-size: 18px;
    color: #a7aeb1;
    transition: .2s;
 }
+
 .bi:hover {
-   color:#fff;
+   color: #fff;
 }
+
 .socials {
    position: absolute;
    left: 10px;
@@ -379,8 +398,15 @@ footer .copyright {
 }
 
 @keyframes open {
-   0%, 50% {transform: scale(0%);}
-   100% {transform: scale(100%);}
+
+   0%,
+   50% {
+      transform: scale(0%);
+   }
+
+   100% {
+      transform: scale(100%);
+   }
 }
 
 .modals h1 {
@@ -415,6 +441,7 @@ footer .copyright {
    width: 100%;
    justify-content: space-between;
 }
+
 .gameOverBtnEl .restartButtonEl {
    background-color: orangered;
 }
@@ -426,14 +453,16 @@ footer .copyright {
    flex-grow: 1;
    flex-wrap: wrap;
 }
+
 .levels button {
    width: 120px;
    text-align: center;
    transition: .3s;
 }
+
 .levels button:hover {
    transform: none;
-   background-color:#196119;
+   background-color: #196119;
 }
 
 .gameLevelsModal h1 {
@@ -463,6 +492,7 @@ footer .copyright {
    top: 10px;
    border: 2px solid #4A90E2;
 }
+
 .helpEl .close:hover {
    background-color: #4A90E2;
 }
@@ -487,9 +517,11 @@ footer .copyright {
 .gameLevelsEl {
    display: none;
 }
+
 .gameOverEl {
    display: none;
 }
+
 .helpEl {
    display: none;
 }
