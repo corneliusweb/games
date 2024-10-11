@@ -6,6 +6,7 @@ const prvGuessEl = document.querySelector('.prvGuessEl');
 const differenceEl = document.querySelector('.differenceEl');
 const guessOutcomeEl = document.querySelector('.guessOutcomeEl');
 
+
 // generate dynamic ranges
 const lowestRandom = Math.floor(Math.random() * 100) + 1;
 const mediumRandom = Math.floor(Math.random() * 250) + 250;
@@ -18,7 +19,6 @@ let timer;
 const timerEl = document.querySelector('.timerEl');
 
 let countdown;
-let restartButton;
 let attemptsCount = 1;
 let maxAttempt;
 
@@ -225,12 +225,7 @@ helpBtn.addEventListener('click', () => {
 
 // set game over
 function setGameOver() {
-	restartButton = document.createElement('button');
-	restartButton.textContent = 'Restart Game';
-	restartButton.setAttribute('class', 'restartButtonEl');
-	restartButton.textContent = 'Restart Game';
-	gameOverBtnEl.appendChild(restartButton);
-
+   const restartButton = document.querySelector('.restartButtonEl');
 	gameOverModal.style.display = 'flex';
 
 	enableStartBtn();
@@ -242,10 +237,8 @@ function setGameOver() {
 
 function restartGame() {
 	inputEl.value = '';
-	guessOutcomeEl.style.display = 'none';
-
 	attemptsCount = 1;
-	gameOverBtnEl.removeChild(restartButton);
+	guessOutcomeEl.style.display = 'none';
 	gameOverModal.style.display = 'none';
 
 	setDisabledEl();
