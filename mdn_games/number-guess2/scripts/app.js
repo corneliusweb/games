@@ -89,11 +89,7 @@ function checkGuess() {
 			guessOutcomeEl.style.display = 'none';
 
 			// pause guesses left
-			if (maxAttempt !== 10) {
-				++maxAttempt;
-			} else {
-				maxAttempt += 1;
-			}
+			++maxAttempt;
 			--attemptsCount;
 		} else {
 			prvGuessEl.textContent += ` ${userGuess}`;
@@ -150,11 +146,6 @@ function showLevels() {
 			attemptsCount = 1;
 			inputEl.value = '';
 			guessOutcomeEl.style.display = 'none';
-			inputEl.focus();
-
-			if (restartButton) {
-				restartButton.parentNode.removeChild(restartButton);
-			}
 
 			setDisabledEl();
 			checkCurrentLevel();
@@ -171,7 +162,7 @@ function setEasy() {
 
 	if (currentLevel !== 'easy') {
 		currentLevel = 'easy';
-		enabledStartBtn();
+		enableStartBtn();
 		checkCurrentLevel();
 	}
 }
@@ -188,7 +179,7 @@ function setBalanced() {
 	// set level
 	if (currentLevel !== 'balanced') {
 		currentLevel = 'balanced';
-		enabledStartBtn();
+		enableStartBtn();
 		checkCurrentLevel();
 	}
 }
@@ -205,7 +196,7 @@ function setMindReader() {
 	// set level
 	if (currentLevel !== 'mindReader') {
 		currentLevel = 'mindReader';
-		enabledStartBtn();
+		enableStartBtn();
 		checkCurrentLevel();
 	}
 }
@@ -225,7 +216,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 document.querySelector('.helpEl .close').addEventListener('click', () => {
-	helpModal.style.display = 'none';
+   helpModal.style.display = 'none';
+   inputEl.focus();
 });
 helpBtn.addEventListener('click', () => {
 	helpModal.style.display = 'flex';
@@ -241,7 +233,7 @@ function setGameOver() {
 
 	gameOverModal.style.display = 'flex';
 
-	enabledStartBtn();
+	enableStartBtn();
 	setDisabledEl();
 	resetTimer();
 
@@ -251,7 +243,6 @@ function setGameOver() {
 function restartGame() {
 	inputEl.value = '';
 	guessOutcomeEl.style.display = 'none';
-	inputEl.focus();
 
 	attemptsCount = 1;
 	gameOverBtnEl.removeChild(restartButton);
@@ -300,7 +291,7 @@ function disableStartBtn() {
 	startBtn.style.opacity = '0.3';
 }
 
-function enabledStartBtn() {
+function enableStartBtn() {
 	startBtn.disabled = false;
 	startBtn.style.cursor = 'pointer';
 	startBtn.style.opacity = '1';
