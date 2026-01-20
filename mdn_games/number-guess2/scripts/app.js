@@ -6,7 +6,6 @@ const prvGuessEl = document.querySelector('.prvGuessEl');
 const differenceEl = document.querySelector('.differenceEl');
 const guessOutcomeEl = document.querySelector('.guessOutcomeEl');
 
-
 // generate dynamic ranges
 const lowestRandom = Math.floor(Math.random() * 100) + 1;
 const mediumRandom = Math.floor(Math.random() * 250) + 250;
@@ -216,8 +215,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 document.querySelector('.helpEl .close').addEventListener('click', () => {
-   helpModal.style.display = 'none';
-   inputEl.focus();
+	helpModal.style.display = 'none';
+	inputEl.focus();
 });
 helpBtn.addEventListener('click', () => {
 	helpModal.style.display = 'flex';
@@ -225,7 +224,7 @@ helpBtn.addEventListener('click', () => {
 
 // set game over
 function setGameOver() {
-   const restartButton = document.querySelector('.restartButtonEl');
+	const restartButton = document.querySelector('.restartButtonEl');
 	gameOverModal.style.display = 'flex';
 
 	enableStartBtn();
@@ -320,3 +319,12 @@ function clearGameStates() {
 	}
 	prvGuessEl.textContent = '';
 }
+
+// update year dynamically
+function updateYear() {
+	const yearEl = document.querySelector('.copyright p > span');
+	const currentYear = new Date().getFullYear();
+
+	yearEl.textContent = currentYear;
+}
+updateYear();
